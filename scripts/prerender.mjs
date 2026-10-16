@@ -9,7 +9,6 @@ const routes = [
   '/',
   '/diensten/',
   '/over-ons/',
-  '/tarieven/',
   '/veelgestelde-vragen/',
   '/wespenverdelging-wechelderzande/',
   '/wespennest-gierle/',

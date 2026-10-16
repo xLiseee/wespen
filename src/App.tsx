@@ -1,10 +1,11 @@
+
 import { useEffect, useState } from 'react';
 
 const SITE_URL = 'https://www.wespdirect.be';
 const BUSINESS_NAME = 'Wespenexpert Luc';
 const WHATSAPP_NUMBER = '+32496793094';
 
-type Tab = 'home' | 'diensten' | 'over-ons' | 'tarieven' | 'faq' | 'plaats';
+type Tab = 'home' | 'diensten' | 'over-ons' | 'faq' | 'plaats';
 type LocationPage = (typeof locations)[number];
 type PageMetadata = {
   tab: Tab;
@@ -71,12 +72,6 @@ const pages: Record<string, PageMetadata> = {
     heading: 'Over Luc',
     title: 'Over Luc | Wespenexpert Luc',
     description: 'Maak kennis met Luc, je persoonlijke contact voor advies en bestrijding van wespen- en hoornaarnesten in de regio Lille.',
-  },
-  '/tarieven/': {
-    tab: 'tarieven' as const,
-    heading: 'Tarieven',
-    title: 'Tarieven wespenbestrijding | Wespenexpert Luc',
-    description: 'Bekijk de tarieven voor wespenbestrijding. Luc bespreekt vooraf de aanpak en eventuele kosten voor jouw situatie.',
   },
   '/veelgestelde-vragen/': {
     tab: 'faq' as const,
@@ -278,7 +273,6 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
                 <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} aria-current={activeTab === 'home' ? 'page' : undefined} className={`${activeTab === 'home' ? 'text-amber-800 font-bold' : 'hover:text-amber-600'} transition`}>Home</a>
                 <a href="/diensten/" onClick={(event) => { event.preventDefault(); navigateTo('/diensten/'); }} aria-current={activeTab === 'diensten' ? 'page' : undefined} className={`${activeTab === 'diensten' ? 'text-amber-800 font-bold' : 'hover:text-amber-600'} transition`}>Diensten</a>
                 <a href="/over-ons/" onClick={(event) => { event.preventDefault(); navigateTo('/over-ons/'); }} aria-current={activeTab === 'over-ons' ? 'page' : undefined} className={`${activeTab === 'over-ons' ? 'text-amber-800 font-bold' : 'hover:text-amber-600'} transition`}>Over Ons</a>
-                <a href="/tarieven/" onClick={(event) => { event.preventDefault(); navigateTo('/tarieven/'); }} aria-current={activeTab === 'tarieven' ? 'page' : undefined} className={`${activeTab === 'tarieven' ? 'text-amber-800 font-bold' : 'hover:text-amber-600'} transition`}>Tarieven</a>
                 <a href="/veelgestelde-vragen/" onClick={(event) => { event.preventDefault(); navigateTo('/veelgestelde-vragen/'); }} aria-current={activeTab === 'faq' ? 'page' : undefined} className={`${activeTab === 'faq' ? 'text-amber-800 font-bold' : 'hover:text-amber-600'} transition`}>FAQ</a>
               </nav>
 
@@ -307,7 +301,6 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
                 <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="text-left px-4 py-2 hover:bg-amber-50 rounded-xl font-medium">Home</a>
                 <a href="/diensten/" onClick={(event) => { event.preventDefault(); navigateTo('/diensten/'); }} className="text-left px-4 py-2 hover:bg-amber-50 rounded-xl font-medium">Diensten</a>
                 <a href="/over-ons/" onClick={(event) => { event.preventDefault(); navigateTo('/over-ons/'); }} className="text-left px-4 py-2 hover:bg-amber-50 rounded-xl font-medium">Over Ons</a>
-                <a href="/tarieven/" onClick={(event) => { event.preventDefault(); navigateTo('/tarieven/'); }} className="text-left px-4 py-2 hover:bg-amber-50 rounded-xl font-medium">Tarieven</a>
                 <a href="/veelgestelde-vragen/" onClick={(event) => { event.preventDefault(); navigateTo('/veelgestelde-vragen/'); }} className="text-left px-4 py-2 hover:bg-amber-50 rounded-xl font-medium">FAQ</a>
                 <a href="tel:+32496793094" className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-amber-950 px-4 py-3 rounded-xl font-semibold transition">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -339,7 +332,7 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
               Snel & Veilig van al je Wespen Af
             </h1>
             <p className="text-gray-200 text-sm sm:text-base font-light leading-relaxed mb-6 max-w-xl">
-              Ik ben Luc. Ik help je met wespen- en hoornaarnesten in Lille, Gierle, Poederlee en Wechelderzande. Je krijgt persoonlijk advies en vooraf duidelijkheid over de mogelijke aanpak en kosten.
+              Ik ben Luc. Ik help je met wespen- en hoornaarnesten in Lille, Gierle, Poederlee en Wechelderzande.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href="tel:+32496793094" className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-amber-950 font-semibold px-7 py-3.5 rounded-full transition shadow-lg">
@@ -407,9 +400,6 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
                     <a href="https://wa.me/32496793094?text=Hallo%20Luc%2C%20ik%20heb%20een%20vraag%20over%20wespen%20of%20hoornaars." target="_blank" rel="noreferrer" className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition shadow-md flex items-center gap-2 text-sm">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.13 0C5.61 0 .3 5.3.3 11.82c0 2.08.55 4.1 1.59 5.88L.2 24l6.45-1.69a11.83 11.83 0 0 0 5.48 1.35h.01c6.52 0 11.83-5.3 11.83-11.82 0-3.16-1.23-6.13-3.45-8.36ZM12.14 21.65a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.83 1 1.02-3.73-.24-.38a9.77 9.77 0 0 1-1.5-5.14c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.01c0 5.47-4.45 9.92-9.92 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.78-1.69-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
                       Stuur Luc een bericht
-                    </a>
-                    <a href="/diensten/" onClick={(event) => { event.preventDefault(); navigateTo('/diensten/'); }} className="text-amber-800 hover:text-amber-950 font-medium text-sm px-4 py-2 transition">
-                      Bekijk Onze Diensten &rarr;
                     </a>
                   </div>
                 </div>
@@ -486,27 +476,6 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
               </div>
             </section>
 
-            <section className="py-12" aria-labelledby="werkgebied-heading">
-              <h2 id="werkgebied-heading" className="text-2xl font-bold text-amber-950 sm:text-3xl">
-                Wespenbestrijding in Lille en omliggende plaatsen
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-gray-600">
-                Luc is beschikbaar voor vragen over wespen- en hoornaarnesten in deze plaatsen. Kies je woonplaats voor informatie over de aanpak en contact.
-              </p>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {locations.map((location) => (
-                  <li key={location.slug}>
-                    <a
-                      href={`/${location.slug}/`}
-                      onClick={(event) => { event.preventDefault(); navigateTo(`/${location.slug}/`); }}
-                      className="block rounded-2xl border border-amber-100 bg-white p-4 font-semibold text-amber-900 shadow-sm transition hover:border-amber-300 hover:bg-amber-50"
-                    >
-                      Wespenbestrijding {location.name} <span aria-hidden="true">→</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
           </div>
         )}
 
@@ -637,31 +606,6 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
           </div>
         )}
 
-        {activeTab === 'tarieven' && (
-          <div className="py-12 max-w-3xl mx-auto space-y-6">
-            <div className="text-center">
-              <span className="text-xs uppercase tracking-widest text-amber-700 font-bold bg-amber-100 px-3 py-1 rounded-full">Transparant</span>
-              <h2 className="text-3xl font-bold text-amber-950 mt-3 mb-2">Eerlijke & Vaste Tarieven</h2>
-              <p className="text-gray-600 text-sm">Luc bespreekt vooraf duidelijk de kosten en de aanpak.</p>
-            </div>
-            <div className="bg-white p-8 rounded-[2.5rem] border border-amber-100 shadow-sm space-y-4">
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <span className="text-sm font-semibold text-gray-800">Standaard wespennest bestrijding</span>
-                <span className="font-bold text-amber-700">€ 65,- all-in</span>
-              </div>
-
-              <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                <span className="text-sm font-semibold text-gray-800">Tweede nest tegelijk behandeld</span>
-                <span className="font-bold text-amber-700">€ 30,- extra</span>
-              </div>
-              <div className="flex justify-between items-center pb-2">
-                <span className="text-sm font-semibold text-gray-800">Seizoensgarantie</span>
-                <span className="font-bold text-amber-700">Gratis inbegrepen</span>
-              </div>
-            </div>
-          </div>
-        )}
-
         {activeTab === 'faq' && (
           <section className="py-12 bg-white rounded-[2.5rem] p-8 sm:p-12 border border-amber-100 my-8 max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -711,28 +655,57 @@ export default function App({ initialPath = '/' }: { initialPath?: string }) {
       </main>
 
       <footer className="mt-16 w-full bg-amber-950 text-amber-100">
-        <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 py-8">
-          <div className="flex flex-col gap-6 border-b border-amber-900 pb-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-lg font-semibold text-white">Wespenexpert Luc</p>
-            <nav aria-label="Footer navigatie" className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-amber-200">
-              <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="hover:text-white transition">Home</a>
-              <a href="/diensten/" onClick={(event) => { event.preventDefault(); navigateTo('/diensten/'); }} className="hover:text-white transition">Diensten</a>
-              <a href="/over-ons/" onClick={(event) => { event.preventDefault(); navigateTo('/over-ons/'); }} className="hover:text-white transition">Over Luc</a>
-              <a href="/tarieven/" onClick={(event) => { event.preventDefault(); navigateTo('/tarieven/'); }} className="hover:text-white transition">Tarieven</a>
-              <a href="/veelgestelde-vragen/" onClick={(event) => { event.preventDefault(); navigateTo('/veelgestelde-vragen/'); }} className="hover:text-white transition">Veelgestelde vragen</a>
-              {locations.map((location) => (
-                <a key={location.slug} href={`/${location.slug}/`} onClick={(event) => { event.preventDefault(); navigateTo(`/${location.slug}/`); }} className="hover:text-white transition">
-                  {location.name}
+        <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-8 sm:py-14">
+          <div className="grid gap-10 border-b border-amber-800/70 pb-10 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr]">
+            <div>
+              <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="inline-block text-2xl font-bold tracking-tight text-white">
+                Wespenexpert <span className="text-amber-400">Luc</span>
+              </a>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-amber-200">
+                Persoonlijke hulp bij wespen- en hoornaarnesten. Neem contact op om je situatie te bespreken.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="tel:+32496793094" className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-5 py-3 text-sm font-semibold text-amber-950 transition hover:bg-amber-300">
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Bel Luc
                 </a>
-              ))}
+                <a href="https://wa.me/32496793094?text=Hallo%20Luc%2C%20ik%20heb%20een%20vraag%20over%20wespen%20of%20hoornaars." target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-500">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20.52 3.48A11.78 11.78 0 0 0 12.13 0C5.61 0 .3 5.3.3 11.82c0 2.08.55 4.1 1.59 5.88L.2 24l6.45-1.69a11.83 11.83 0 0 0 5.48 1.35h.01c6.52 0 11.83-5.3 11.83-11.82 0-3.16-1.23-6.13-3.45-8.36ZM12.14 21.65a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.83 1 1.02-3.73-.24-.38a9.77 9.77 0 0 1-1.5-5.14c0-5.47 4.45-9.92 9.93-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.01c0 5.47-4.45 9.92-9.92 9.92Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.51-1.78-1.69-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.5 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <nav aria-label="Footer navigatie">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-white">Ontdek</h2>
+              <ul className="mt-4 space-y-3 text-sm text-amber-200">
+                <li><a href="/diensten/" onClick={(event) => { event.preventDefault(); navigateTo('/diensten/'); }} className="transition hover:text-white">Diensten</a></li>
+                <li><a href="/over-ons/" onClick={(event) => { event.preventDefault(); navigateTo('/over-ons/'); }} className="transition hover:text-white">Over Luc</a></li>
+                <li><a href="/veelgestelde-vragen/" onClick={(event) => { event.preventDefault(); navigateTo('/veelgestelde-vragen/'); }} className="transition hover:text-white">Veelgestelde vragen</a></li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Werkgebied">
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-white">Werkgebied</h2>
+              <ul className="mt-4 space-y-3 text-sm text-amber-200">
+                {locations.map((location) => (
+                  <li key={location.slug}>
+                    <a href={`/${location.slug}/`} onClick={(event) => { event.preventDefault(); navigateTo(`/${location.slug}/`); }} className="transition hover:text-white">
+                      {location.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
-          <div className="flex flex-col gap-3 py-5 text-sm sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-amber-300">&copy; {new Date().getFullYear()} Wespenexpert Luc</p>
-            <div className="flex flex-wrap gap-x-5 gap-y-2">
-              <a href="tel:+32496793094" className="hover:text-white transition">Bel Luc</a>
-              <a href="https://wa.me/32496793094?text=Hallo%20Luc%2C%20ik%20heb%20een%20vraag%20over%20wespen%20of%20hoornaars." target="_blank" rel="noreferrer" className="hover:text-white transition">Stuur Luc een bericht</a>
-            </div>
+
+          <div className="flex flex-col gap-2 pt-6 text-xs text-amber-300 sm:flex-row sm:items-center sm:justify-between">
+            <p>&copy; {new Date().getFullYear()} Wespenexpert Luc. Alle rechten voorbehouden.</p>
+            <a href="/" onClick={(event) => { event.preventDefault(); navigateTo('/'); }} className="transition hover:text-white">Terug naar boven</a>
           </div>
         </div>
       </footer>
